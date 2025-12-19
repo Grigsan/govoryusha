@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { IconCard } from '@/components/icon-card';
 import { useSpeech } from '@/hooks/use-speech';
 import { CATEGORIES, ALL_ITEMS, type CardItem } from '@/lib/data';
-import { Play, Trash2, X, ArrowLeft } from 'lucide-react';
+import { Play, Trash2, X } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -55,8 +55,6 @@ export default function PhraseBuilderPage() {
                        <IconCard
                         label={item.label}
                         icon={item.icon}
-                        imageUrl={item.imageUrl}
-                        imageHint={item.imageHint}
                         onClick={() => {}}
                       />
                     </div>
@@ -93,7 +91,7 @@ export default function PhraseBuilderPage() {
       </Card>
 
       <Tabs defaultValue="all" className="flex-grow">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-7 xl:grid-cols-9">
             <TabsTrigger value="all">Все</TabsTrigger>
             {CATEGORIES.map(category => (
                 <TabsTrigger key={category.id} value={category.id}>{category.label}</TabsTrigger>
@@ -107,8 +105,6 @@ export default function PhraseBuilderPage() {
                         key={item.id}
                         label={item.label}
                         icon={item.icon}
-                        imageUrl={item.imageUrl}
-                        imageHint={item.imageHint}
                         onClick={() => addToPhrase(item)}
                     />
                 ))}
@@ -122,8 +118,6 @@ export default function PhraseBuilderPage() {
                             key={item.id}
                             label={item.label}
                             icon={item.icon}
-                            imageUrl={item.imageUrl}
-                            imageHint={item.imageHint}
                             onClick={() => addToPhrase(item)}
                         />
                     ))}

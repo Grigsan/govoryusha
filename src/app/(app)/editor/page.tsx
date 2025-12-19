@@ -36,11 +36,11 @@ export default function ContentEditorPage() {
   });
 
   function onSubmit(values: FormValues) {
+    // This logic is flawed as it only works with image URLs
+    // For now, we'll just create a card without an image/icon
     const newCard: CardItem = {
       id: `custom-${Date.now()}`,
       label: values.label,
-      imageUrl: values.image ? URL.createObjectURL(values.image[0]) : "https://picsum.photos/seed/custom/200/200",
-      imageHint: 'custom image'
     };
     setCustomCards(prev => [...prev, newCard]);
     toast({
@@ -84,13 +84,14 @@ export default function ContentEditorPage() {
                   name="image"
                   render={({ field: { onChange, value, ...rest } }) => (
                     <FormItem>
-                      <FormLabel>Изображение</FormLabel>
+                      <FormLabel>Изображение (неактивно)</FormLabel>
                       <FormControl>
                         <Input 
                             type="file" 
                             accept="image/*"
                             onChange={(e) => onChange(e.target.files)}
                             {...rest}
+                            disabled
                         />
                       </FormControl>
                       <FormMessage />
@@ -131,7 +132,6 @@ export default function ContentEditorPage() {
                   <IconCard
                     key={card.id}
                     label={card.label}
-                    imageUrl={card.imageUrl}
                     onClick={() => {
                         toast({ title: "Карточка нажата!", description: card.label });
                     }}

@@ -1,7 +1,6 @@
 "use client";
 
 import type { FC } from 'react';
-import Image from 'next/image';
 import type { LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
@@ -9,13 +8,11 @@ import { cn } from '@/lib/utils';
 interface IconCardProps {
   label: string;
   icon?: LucideIcon;
-  imageUrl?: string;
-  imageHint?: string;
   onClick: () => void;
   isSelected?: boolean;
 }
 
-export const IconCard: FC<IconCardProps> = ({ label, icon: Icon, imageUrl, imageHint, onClick, isSelected }) => {
+export const IconCard: FC<IconCardProps> = ({ label, icon: Icon, onClick, isSelected }) => {
   return (
     <button
       onClick={onClick}
@@ -31,18 +28,9 @@ export const IconCard: FC<IconCardProps> = ({ label, icon: Icon, imageUrl, image
         isSelected ? "border-primary-foreground bg-primary/20 border-2" : ""
       )}>
         <CardContent className="flex flex-col items-center justify-center p-4 aspect-square">
-          {Icon ? (
+          {Icon && (
             <Icon className="w-20 h-20 text-muted-foreground mb-2" />
-          ) : imageUrl ? (
-            <Image
-              src={imageUrl}
-              alt={label}
-              width={80}
-              height={80}
-              className="object-cover rounded-md mb-2"
-              data-ai-hint={imageHint}
-            />
-          ) : null}
+          )}
           <p className="font-semibold text-foreground text-base md:text-lg">{label}</p>
         </CardContent>
       </Card>

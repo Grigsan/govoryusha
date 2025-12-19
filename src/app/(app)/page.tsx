@@ -49,8 +49,6 @@ export default function InteractiveBoardsPage() {
                 key={item.id}
                 label={item.label}
                 icon={item.icon}
-                imageUrl={item.imageUrl}
-                imageHint={item.imageHint}
                 onClick={() => handleItemClick(item.label)}
               />
             ))}
