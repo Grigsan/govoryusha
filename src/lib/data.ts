@@ -10,6 +10,8 @@ import {
   Hand,
   Shirt,
   Cat,
+  CookingPot,
+  Sandwich,
 } from 'lucide-react';
 import data from './placeholder-images.json';
 
@@ -58,8 +60,8 @@ export const CATEGORIES: Category[] = [
       { id: 'water', label: 'Вода', ...getImage('water') },
       { id: 'juice', label: 'Сок', ...getImage('juice') },
       { id: 'milk', label: 'Молоко', ...getImage('milk') },
-      { id: 'bread', label: 'Хлеб', ...getImage('bread') },
-      { id: 'porridge', label: 'Каша', ...getImage('porridge') },
+      { id: 'bread', label: 'Хлеб', icon: Sandwich, ...getImage('bread') },
+      { id: 'porridge', label: 'Каша', icon: CookingPot, ...getImage('porridge') },
     ],
   },
     {
