@@ -12,6 +12,7 @@ import {
   Cat,
   CookingPot,
   Sandwich,
+  Footprints,
 } from 'lucide-react';
 import data from './placeholder-images.json';
 
@@ -46,7 +47,7 @@ export const CATEGORIES: Category[] = [
       { id: 'play', label: 'Играть', icon: ToyBrick, ...getImage('play') },
       { id: 'sleep', label: 'Спать', ...getImage('sleep') },
       { id: 'toilet', label: 'В туалет', ...getImage('toilet') },
-      { id: 'walk', label: 'Гулять', ...getImage('walk') },
+      { id: 'walk', label: 'Гулять', icon: Footprints },
     ],
   },
   {
