@@ -1,0 +1,63 @@
+"use client";
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import {
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarContent,
+  SidebarFooter,
+  SidebarTrigger,
+} from '@/components/ui/sidebar';
+import { Grid3x3, MessageSquarePlus, FolderPlus, MessageCircleHeart } from 'lucide-react';
+
+const navItems = [
+  { href: '/', label: 'Доски', icon: Grid3x3 },
+  { href: '/builder', label: 'Конструктор', icon: MessageSquarePlus },
+  { href: '/editor', label: 'Редактор', icon: FolderPlus },
+];
+
+export function AppSidebar() {
+  const pathname = usePathname();
+
+  return (
+    <>
+      <SidebarHeader className="flex items-center gap-2">
+        <div className="flex justify-between items-center w-full">
+            <div className="flex items-center gap-2">
+                <div className="bg-primary p-2 rounded-lg">
+                    <MessageCircleHeart className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h1 className="text-xl font-bold text-foreground">Говоруша</h1>
+            </div>
+            <SidebarTrigger className="md:hidden" />
+        </div>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarMenu>
+          {navItems.map((item) => (
+            <SidebarMenuItem key={item.href}>
+              <SidebarMenuButton
+                asChild
+                isActive={pathname === item.href}
+                tooltip={item.label}
+              >
+                <Link href={item.href}>
+                  <item.icon />
+                  <span>{item.label}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarContent>
+      <SidebarFooter>
+        <div className="text-xs text-muted-foreground p-2 text-center group-data-[collapsible=icon]:hidden">
+            <p>Сделано с ❤️ для особенных детей</p>
+        </div>
+      </SidebarFooter>
+    </>
+  );
+}

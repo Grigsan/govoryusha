@@ -1,3 +1,124 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "apple",
+      "description": "A red apple.",
+      "imageUrl": "https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyZWQlMjBhcHBsZXxlbnwwfHx8fDE3NjYxNTQwNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "red apple"
+    },
+    {
+      "id": "banana",
+      "description": "A yellow banana.",
+      "imageUrl": "https://images.unsplash.com/photo-1668762924684-a9753a0a887c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx5ZWxsb3clMjBiYW5hbmF8ZW58MHx8fHwxNzY2MDgxMTY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "yellow banana"
+    },
+    {
+      "id": "soup",
+      "description": "A bowl of soup.",
+      "imageUrl": "https://images.unsplash.com/photo-1688123738655-c924804208a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxib3dsJTIwc291cHxlbnwwfHx8fDE3NjYxNDU1MTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bowl soup"
+    },
+    {
+      "id": "water",
+      "description": "A glass of water.",
+      "imageUrl": "https://images.unsplash.com/photo-1534616042650-80f5c9b61f09?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnbGFzcyUyMHdhdGVyfGVufDB8fHx8MTc2NjA5Mjc0MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "glass water"
+    },
+    {
+      "id": "juice",
+      "description": "A glass of juice.",
+      "imageUrl": "https://images.unsplash.com/photo-1650460069032-3c410224fe55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxvcmFuZ2UlMjBqdWljZXxlbnwwfHx8fDE3NjYwMzk2NjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "orange juice"
+    },
+    {
+      "id": "milk",
+      "description": "A glass of milk.",
+      "imageUrl": "https://images.unsplash.com/photo-1629603401856-82dad13ca4d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnbGFzcyUyMG1pbGt8ZW58MHx8fHwxNzY2MTIyMDEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "glass milk"
+    },
+    {
+      "id": "happy",
+      "description": "A happy smiling face.",
+      "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoYXBweSUyMGZhY2V8ZW58MHx8fHwxNzY2MDgzMzExfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "happy face"
+    },
+    {
+      "id": "sad",
+      "description": "A sad face.",
+      "imageUrl": "https://images.unsplash.com/photo-1517545084371-4a575dde2a02?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzYWQlMjBmYWNlfGVufDB8fHx8MTc2NjE1NDA0MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sad face"
+    },
+    {
+      "id": "angry",
+      "description": "An angry face.",
+      "imageUrl": "https://images.unsplash.com/photo-1584970658864-242327da66dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YW5ncnklMjBmYWNlfGVufDB8fHx8MTc2NjE1NDA0MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "angry face"
+    },
+    {
+      "id": "mom",
+      "description": "A picture of a mom.",
+      "imageUrl": "https://images.unsplash.com/photo-1542385151-efd9000785a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtb3RoZXIlMjBjaGlsZHxlbnwwfHx8fDE3NjYwNjg3MDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mother child"
+    },
+    {
+      "id": "dad",
+      "description": "A picture of a dad.",
+      "imageUrl": "https://images.unsplash.com/photo-1554329392-4daecdf28803?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmYXRoZXIlMjBjaGlsZHxlbnwwfHx8fDE3NjYxNTQwNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "father child"
+    },
+    {
+      "id": "teacher",
+      "description": "A picture of a teacher.",
+      "imageUrl": "https://images.unsplash.com/photo-1511629091441-ee46146481b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZWFjaGVyJTIwY2xhc3Nyb29tfGVufDB8fHx8MTc2NjA5MjI2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "teacher classroom"
+    },
+    {
+      "id": "home",
+      "description": "A picture of a house.",
+      "imageUrl": "https://images.unsplash.com/photo-1721149122657-7b5440f39160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzdWJ1cmJhbiUyMGhvdXNlfGVufDB8fHx8MTc2NjA2OTI0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "suburban house"
+    },
+    {
+      "id": "school",
+      "description": "A picture of a school.",
+      "imageUrl": "https://images.unsplash.com/photo-1611941671018-6c3907cb7a76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c2Nob29sJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzY2MDQyNjQ3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "school building"
+    },
+    {
+      "id": "shop",
+      "description": "A picture of a shop.",
+      "imageUrl": "https://images.unsplash.com/photo-1527368746281-798b65e1ac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzdG9yZSUyMGZyb250fGVufDB8fHx8MTc2NjAzNzE4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "store front"
+    },
+    {
+      "id": "park",
+      "description": "A picture of a park.",
+      "imageUrl": "https://images.unsplash.com/photo-1723482255177-98b44112b573?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eSUyMHBhcmt8ZW58MHx8fHwxNzY2MDU1OTA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city park"
+    },
+    {
+      "id": "play",
+      "description": "An image representing play.",
+      "imageUrl": "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaGlsZHJlbiUyMHBsYXlpbmd8ZW58MHx8fHwxNzY2MTAxMDEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "children playing"
+    },
+    {
+      "id": "sleep",
+      "description": "An image representing sleep.",
+      "imageUrl": "https://images.unsplash.com/photo-1606162307024-a1343187a5b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZXJzb24lMjBzbGVlcGluZ3xlbnwwfHx8fDE3NjYwNzA5MTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person sleeping"
+    },
+    {
+      "id": "toilet",
+      "description": "A picture of a toilet.",
+      "imageUrl": "https://images.unsplash.com/photo-1569597967185-cd6120712154?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0b2lsZXQlMjBiYXRocm9vbXxlbnwwfHx8fDE3NjYxNTQwNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "toilet bathroom"
+    },
+    {
+      "id": "custom-card-placeholder",
+      "description": "Placeholder for a custom card.",
+      "imageUrl": "https://images.unsplash.com/photo-1585854467604-cf2080ccef31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhYnN0cmFjdCUyMHBhdHRlcm58ZW58MHx8fHwxNzY2MDg2ODk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract pattern"
+    }
+  ]
 }
