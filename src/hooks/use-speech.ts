@@ -11,17 +11,11 @@ export function useSpeech() {
       setVoices(window.speechSynthesis.getVoices());
     };
 
-    // Get initial voices
-    const initialVoices = window.speechSynthesis.getVoices();
-    if (initialVoices.length > 0) {
-      setVoices(initialVoices);
-    }
-
-    // Subscribe to voice changes
-    window.speechSynthesis.addEventListener('voiceschanged', handleVoicesChanged);
+    window.speechSynthesis.onvoiceschanged = handleVoicesChanged;
+    handleVoicesChanged(); // initial call
 
     return () => {
-      window.speechSynthesis.removeEventListener('voiceschanged', handleVoicesChanged);
+      window.speechSynthesis.onvoiceschanged = null;
       window.speechSynthesis.cancel();
     };
   }, []);
@@ -32,7 +26,6 @@ export function useSpeech() {
     }
 
     const utterance = new SpeechSynthesisUtterance(text);
-    // Find the best available Russian voice
     const russianVoice = voices.find(voice => voice.lang === 'ru-RU' && voice.localService) || voices.find(voice => voice.lang === 'ru-RU');
     
     utterance.voice = russianVoice || voices.find(voice => voice.lang.startsWith('ru')) || null;
