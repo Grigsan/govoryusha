@@ -1,14 +1,21 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-  apiKey: process.env.DEEPSEEK_KEY || process.env.OPENROUTER_API_KEY_DEEPSEEK || process.env.OPENROUTER_API_KEY_OLMO,
-  baseURL: "https://openrouter.ai/api/v1",
-});
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
   try {
     const { prompt } = await req.json();
+
+    const apiKey = process.env.DEEPSEEK_KEY || 
+                   process.env.OPENROUTER_API_KEY_DEEPSEEK || 
+                   process.env.OPENROUTER_API_KEY_OLMO ||
+                   'no-key-at-build-time';
+
+    const openai = new OpenAI({
+      apiKey: apiKey,
+      baseURL: "https://openrouter.ai/api/v1",
+    });
 
     const response = await openai.chat.completions.create({
       model: "deepseek/deepseek-chat",
@@ -27,9 +34,9 @@ export async function POST(req: Request) {
 
     const content = response.choices[0].message.content;
     return NextResponse.json(JSON.parse(content || '{}'));
-  } catch (error) {
+  } catch (error: any) {
     console.error('AI Generation Error:', error);
-    return NextResponse.json({ error: 'Failed to generate card' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to generate card', details: error.message }, { status: 500 });
   }
 }
 
