@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
+// Force dynamic for Timeweb build
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
