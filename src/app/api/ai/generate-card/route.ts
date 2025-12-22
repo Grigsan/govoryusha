@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENROUTER_API_KEY_DEEPSEEK || process.env.OPENROUTER_API_KEY_OLMO,
+  apiKey: process.env.DEEPSEEK_KEY || process.env.OPENROUTER_API_KEY_DEEPSEEK || process.env.OPENROUTER_API_KEY_OLMO,
   baseURL: "https://openrouter.ai/api/v1",
 });
 
@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     const { prompt } = await req.json();
 
     const response = await openai.chat.completions.create({
-      model: "google/gemini-2.0-flash-001",
+      model: "deepseek/deepseek-chat",
       messages: [
         {
           role: "system",
