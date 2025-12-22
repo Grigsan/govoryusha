@@ -8,34 +8,34 @@ body {
 
 @layer base {
   :root {
-    --background: 210 100% 99%;
+    --background: 0 0% 100%;
     --foreground: 224 71% 4%;
     --card: 0 0% 100%;
     --card-foreground: 224 71% 4%;
     --popover: 0 0% 100%;
     --popover-foreground: 224 71% 4%;
-    --primary: 199 89% 75%; /* Brighter Blue */
-    --primary-foreground: 199 50% 15%;
-    --secondary: 276 60% 85%; /* Brighter Purple */
+    --primary: 217 91% 60%; /* Bright Blue */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 276 60% 85%; /* Bright Purple */
     --secondary-foreground: 276 50% 15%;
-    --muted: 210 40% 95%;
+    --muted: 210 40% 96%;
     --muted-foreground: 210 40% 45%;
-    --accent: 145 60% 80%; /* Brighter Green */
+    --accent: 145 60% 80%; /* Bright Green */
     --accent-foreground: 145 50% 15%;
-    --destructive: 0 84.2% 75%; /* Brighter Red */
-    --destructive-foreground: 0 50% 15%;
-    --border: 210 40% 85%;
-    --input: 210 40% 96%;
-    --ring: 199 70% 70%;
-    --radius: 1rem;
+    --destructive: 0 84.2% 60%; /* Bright Red */
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 30% 85%;
+    --input: 0 0% 100%;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem;
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 224 71% 4%;
-    --sidebar-primary: 199 89% 75%;
-    --sidebar-primary-foreground: 199 50% 15%;
-    --sidebar-accent: 210 100% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 20% 96%;
     --sidebar-accent-foreground: 224 71% 4%;
-    --sidebar-border: 210 40% 90%;
-    --sidebar-ring: 199 70% 70%;
+    --sidebar-border: 217 20% 90%;
+    --sidebar-ring: 217 91% 60%;
   }
   .adult-mode {
     --background: 215 25% 10%;
@@ -114,8 +114,7 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-gradient-to-br from-blue-50 via-purple-50/30 to-pink-50/30 text-foreground;
-    background-attachment: fixed;
+    @apply bg-white text-foreground;
   }
 }
 

@@ -29,6 +29,7 @@ export default function InteractiveBoardsPage() {
   }, []);
 
   const handleItemClick = (item: CardItem) => {
+    console.log('Item clicked:', item.label);
     speak(item.label, item.audioUrl);
     trackClick(item.id);
   };
@@ -69,33 +70,38 @@ export default function InteractiveBoardsPage() {
   if (myCategory) categoriesToShow.push(myCategory);
   categoriesToShow.push(...displayCategories);
 
+  const handleCategoryClick = (category: Category) => {
+    console.log('Category clicked:', category.label);
+    setSelectedCategory(category);
+  };
+
   return (
     <div className="space-y-6">
-      <header className="flex items-center justify-between">
+      <header className="flex items-center justify-between mb-6">
         <div>
-            <h1 className="text-3xl font-bold text-foreground">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 {selectedCategory ? selectedCategory.label : 'Интерактивные доски'}
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-gray-600 text-lg">
                 {selectedCategory ? 'Выберите картинку, чтобы озвучить' : 'Выберите категорию, чтобы начать'}
             </p>
         </div>
         {selectedCategory && (
-            <Button variant="ghost" onClick={() => setSelectedCategory(null)}>
+            <Button variant="ghost" onClick={() => setSelectedCategory(null)} className="hover:bg-blue-50">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Назад к категориям
             </Button>
         )}
       </header>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 p-2">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
         {!selectedCategory
           ? categoriesToShow.map((category) => (
               <IconCard
                 key={category.id}
                 label={category.label}
                 icon={category.icon}
-                onClick={() => setSelectedCategory(category)}
+                onClick={() => handleCategoryClick(category)}
               />
             ))
           : [
