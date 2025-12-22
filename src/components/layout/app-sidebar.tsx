@@ -75,10 +75,13 @@ export function AppSidebar() {
                 asChild
                 isActive={pathname === item.href}
                 tooltip={item.label}
+                className="hover:bg-gradient-to-r hover:from-blue-100 hover:to-purple-100 active:scale-95 transition-all"
               >
-                <Link href={item.href}>
-                  <item.icon />
-                  <span>{item.label}</span>
+                <Link href={item.href} onClick={(e) => {
+                  e.stopPropagation();
+                }}>
+                  <item.icon className="w-5 h-5" />
+                  <span className="font-semibold">{item.label}</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
