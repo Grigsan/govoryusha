@@ -1,0 +1,17 @@
+{
+  "name": "Говоруша",
+  "short_name": "Говоруша",
+  "description": "Приложение AAC для детей",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0f9ff",
+  "theme_color": "#bae6fd",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
+

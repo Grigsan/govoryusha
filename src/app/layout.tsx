@@ -5,6 +5,12 @@ import { Toaster } from "@/components/ui/toaster";
 export const metadata: Metadata = {
   title: 'Говоруша',
   description: 'Интуитивное средство AAC для детей с аутизмом',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Говоруша',
+  },
 };
 
 export default function RootLayout({

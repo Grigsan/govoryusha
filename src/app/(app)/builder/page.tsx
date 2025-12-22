@@ -1,18 +1,31 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { IconCard } from '@/components/icon-card';
 import { useSpeech } from '@/hooks/use-speech';
-import { CATEGORIES, ALL_ITEMS, type CardItem } from '@/lib/data';
-import { Play, Trash2, X } from 'lucide-react';
+import { CATEGORIES, ALL_ITEMS, type CardItem, type Category } from '@/lib/data';
+import { Play, Trash2, X, UserCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useCustomCards } from '@/hooks/use-custom-cards';
 
 export default function PhraseBuilderPage() {
   const [phrase, setPhrase] = useState<CardItem[]>([]);
+  const [isAdultMode, setIsAdultMode] = useState(false);
+  const { customCards } = useCustomCards();
   const { speak, isSpeaking } = useSpeech();
+
+  useEffect(() => {
+    const checkAdultMode = () => {
+      setIsAdultMode(document.documentElement.classList.contains('adult-mode'));
+    };
+    checkAdultMode();
+    const observer = new MutationObserver(checkAdultMode);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
 
   const addToPhrase = (item: CardItem) => {
     setPhrase((currentPhrase) => [...currentPhrase, item]);
@@ -28,10 +41,23 @@ export default function PhraseBuilderPage() {
 
   const speakPhrase = () => {
     if (phrase.length > 0) {
+      // For phrase builder, we still use TTS since it's a combination of words
       const textToSpeak = phrase.map((item) => item.label).join(' ');
       speak(textToSpeak);
     }
   };
+
+  const myCategory: Category | null = customCards.length > 0 ? {
+    id: 'my-cards',
+    label: 'Мои',
+    icon: UserCircle,
+    items: customCards
+  } : null;
+
+  const filteredCategories = CATEGORIES.filter(cat => isAdultMode ? cat.isAdult !== false : !cat.isAdult);
+
+  const displayCategories = myCategory ? [myCategory, ...filteredCategories] : filteredCategories;
+  const allDisplayItems = [...customCards, ...ALL_ITEMS];
 
   return (
     <div className="flex flex-col h-[calc(100vh-8rem)] space-y-4">
@@ -55,6 +81,8 @@ export default function PhraseBuilderPage() {
                        <IconCard
                         label={item.label}
                         icon={item.icon}
+                        iconName={item.iconName}
+                        imageUrl={item.imageUrl}
                         onClick={() => {}}
                       />
                     </div>
@@ -91,33 +119,36 @@ export default function PhraseBuilderPage() {
       </Card>
 
       <Tabs defaultValue="all" className="flex-grow">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-7 xl:grid-cols-9">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-7 xl:grid-cols-9 overflow-x-auto">
             <TabsTrigger value="all">Все</TabsTrigger>
-            {CATEGORIES.map(category => (
+            {displayCategories.map(category => (
                 <TabsTrigger key={category.id} value={category.id}>{category.label}</TabsTrigger>
             ))}
         </TabsList>
         <ScrollArea className="h-[calc(100%-4rem)] mt-4">
         <TabsContent value="all">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-                {ALL_ITEMS.map((item) => (
+                {allDisplayItems.map((item, idx) => (
                     <IconCard
-                        key={item.id}
+                        key={`${item.id}-${idx}`}
                         label={item.label}
                         icon={item.icon}
+                        iconName={item.iconName}
+                        imageUrl={item.imageUrl}
                         onClick={() => addToPhrase(item)}
                     />
                 ))}
             </div>
         </TabsContent>
-        {CATEGORIES.map(category => (
+        {displayCategories.map(category => (
             <TabsContent key={category.id} value={category.id}>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-                    {category.items.map((item) => (
+                    {category.items.map((item, idx) => (
                         <IconCard
-                            key={item.id}
+                            key={`${item.id}-${idx}`}
                             label={item.label}
                             icon={item.icon}
+                            imageUrl={item.imageUrl}
                             onClick={() => addToPhrase(item)}
                         />
                     ))}

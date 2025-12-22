@@ -35,7 +35,7 @@ import {
   Paintbrush,
   BookOpen,
   Apple,
-  Croissant,
+  Banana,
   Beef,
   Cookie,
   Drumstick,
@@ -71,13 +71,40 @@ import {
   MoveLeft,
   MoveRight,
   PencilRuler,
-  Calculator
+  Calculator,
+  Baby,
+  SmilePlus,
+  Ghost,
+  Frown,
+  Moon,
+  Coffee,
+  Waves,
+  Briefcase,
+  Wallet,
+  BusFront,
+  Stethoscope as   HealthIcon,
+  ShieldAlert,
+  Octagon,
+  ShoppingCart,
+  Store,
+  Banknote,
+  Package,
+  Carrot,
+  IceCream,
+  CupSoda,
+  Bowl,
+  Wine,
+  Droplets
 } from 'lucide-react';
 
 export interface CardItem {
   id: string;
   label: string;
   icon?: LucideIcon;
+  iconName?: string;
+  imageUrl?: string;
+  audioUrl?: string;
+  categoryId?: string;
 }
 
 export interface Category {
@@ -85,6 +112,7 @@ export interface Category {
   label: string;
   icon: LucideIcon;
   items: CardItem[];
+  isAdult?: boolean;
 }
 
 export const CATEGORIES: Category[] = [
@@ -108,6 +136,60 @@ export const CATEGORIES: Category[] = [
       { id: 'more', label: 'Еще', icon: Plus },
       { id: 'finished', label: 'Все', icon: Check },
     ],
+  },
+  {
+    id: 'work',
+    label: 'Работа',
+    icon: Briefcase,
+    items: [
+      { id: 'work-go', label: 'На работу', icon: Briefcase },
+      { id: 'break', label: 'Перерыв', icon: Coffee },
+      { id: 'salary', label: 'Зарплата', icon: Wallet },
+      { id: 'task', label: 'Задание', icon: Check },
+      { id: 'boss', label: 'Начальник', icon: Users },
+      { id: 'colleague', label: 'Коллега', icon: Users },
+    ],
+    isAdult: true,
+  },
+  {
+    id: 'money',
+    label: 'Деньги',
+    icon: Wallet,
+    items: [
+      { id: 'buy', label: 'Купить', icon: Wallet },
+      { id: 'price', label: 'Сколько стоит?', icon: Info },
+      { id: 'change', label: 'Сдача', icon: Wallet },
+      { id: 'card-pay', label: 'Оплата картой', icon: Wallet },
+      { id: 'cash', label: 'Наличные', icon: Wallet },
+      { id: 'receipt', label: 'Чек', icon: Check },
+    ],
+    isAdult: true,
+  },
+  {
+    id: 'transport-adult',
+    label: 'Транспорт+',
+    icon: BusFront,
+    items: [
+      { id: 'bus-adult', label: 'Автобус', icon: BusFront },
+      { id: 'metro', label: 'Метро', icon: Train },
+      { id: 'taxi', label: 'Такси', icon: Car },
+      { id: 'ticket', label: 'Билет', icon: Wallet },
+      { id: 'route', label: 'Маршрут', icon: Waves },
+      { id: 'stop', label: 'Остановка', icon: Octagon },
+    ],
+    isAdult: true,
+  },
+  {
+    id: 'health-adult',
+    label: 'Здоровье+',
+    icon: HealthIcon,
+    items: [
+      { id: 'pharmacy', label: 'Аптека', icon: HealthIcon },
+      { id: 'prescription', label: 'Рецепт', icon: Check },
+      { id: 'emergency', label: 'Срочно!', icon: ShieldAlert },
+      { id: 'record', label: 'Запись к врачу', icon: Calendar },
+    ],
+    isAdult: true,
   },
   {
     id: 'actions',
@@ -143,14 +225,17 @@ export const CATEGORIES: Category[] = [
     items: [
       { id: 'eat-food', label: 'Есть', icon: Utensils },
       { id: 'apple', label: 'Яблоко', icon: Apple },
-      { id: 'banana', label: 'Банан', icon: Apple }, // Using Apple as a generic fruit icon
+      { id: 'banana', label: 'Банан', icon: Banana },
       { id: 'soup', label: 'Суп', icon: Soup },
+      { id: 'borscht', label: 'Борщ', icon: CookingPot },
+      { id: 'buckwheat', label: 'Гречка', icon: Utensils },
+      { id: 'pancakes', label: 'Блины', icon: Sandwich },
       { id: 'bread', label: 'Хлеб', icon: Sandwich },
       { id: 'porridge', label: 'Каша', icon: CookingPot },
       { id: 'chicken', label: 'Курица', icon: Drumstick },
       { id: 'meat', label: 'Мясо', icon: Beef },
       { id: 'cookie', label: 'Печенье', icon: Cookie },
-      { id: 'croissant', label: 'Круассан', icon: Croissant },
+      { id: 'croissant', label: 'Круассан', icon: Banana },
     ],
   },
   {
@@ -162,8 +247,27 @@ export const CATEGORIES: Category[] = [
         { id: 'water', label: 'Вода', icon: GlassWater },
         { id: 'juice', label: 'Сок', icon: GlassWater },
         { id: 'milk', label: 'Молоко', icon: Milk },
-        { id: 'tea', label: 'Чай', icon: GlassWater },
+        { id: 'tea', label: 'Чай', icon: Coffee },
+        { id: 'tea-lemon', label: 'Чай с лимоном', icon: Coffee },
     ]
+  },
+  {
+    id: 'shop',
+    label: 'Магазин',
+    icon: ShoppingCart,
+    items: [
+      { id: 'shop-go', label: 'В магазин', icon: Store },
+      { id: 'cart', label: 'Тележка', icon: ShoppingCart },
+      { id: 'cashier', label: 'Касса', icon: Banknote },
+      { id: 'bag', label: 'Пакет', icon: ShoppingBag },
+      { id: 'milk-shop', label: 'Молоко', icon: Milk },
+      { id: 'bread-shop', label: 'Хлеб', icon: Sandwich },
+      { id: 'eggs', label: 'Яйца', icon: Circle },
+      { id: 'carrot', label: 'Морковь', icon: Carrot },
+      { id: 'potato', label: 'Картофель', icon: Circle },
+      { id: 'ice-cream', label: 'Мороженое', icon: IceCream },
+      { id: 'package', label: 'Упаковка', icon: Package },
+    ],
   },
   {
     id: 'feelings',
@@ -171,11 +275,11 @@ export const CATEGORIES: Category[] = [
     icon: Smile,
     items: [
       { id: 'happy', label: 'Радость', icon: Smile },
-      { id: 'sad', label: 'Грусть', icon: Heart },
-      { id: 'angry', label: 'Злость', icon: Heart },
-      { id: 'surprised', label: 'Удивление', icon: Star },
-      { id: 'tired', label: 'Усталость', icon: Star },
-      { id: 'scared', label: 'Страх', icon: Smile },
+      { id: 'sad', label: 'Грусть', icon: Frown },
+      { id: 'angry', label: 'Злость', icon: SmilePlus }, 
+      { id: 'surprised', label: 'Удивление', icon: Ghost },
+      { id: 'tired', label: 'Усталость', icon: Moon },
+      { id: 'scared', label: 'Страх', icon: Ghost },
     ],
   },
   {
@@ -192,6 +296,8 @@ export const CATEGORIES: Category[] = [
       { id: 'grandfather', label: 'Дедушка', icon: Users },
       { id: 'brother', label: 'Брат', icon: PersonStanding },
       { id: 'sister', label: 'Сестра', icon: PersonStanding },
+      { id: 'babushka', label: 'Бабуля', icon: Users },
+      { id: 'dedushka', label: 'Дедуля', icon: Users },
     ],
   },
   {
@@ -223,6 +329,7 @@ export const CATEGORIES: Category[] = [
       { id: 'blocks', label: 'Кубики', icon: Square },
       { id: 'puzzle', label: 'Пазл', icon: ToyBrick },
     ],
+    isAdult: false,
   },
   {
     id: 'animals',
@@ -249,6 +356,8 @@ export const CATEGORIES: Category[] = [
       { id: 'hat', label: 'Шапка', icon: Circle },
       { id: 'shoes', label: 'Обувь', icon: Footprints },
       { id: 'jacket', label: 'Куртка', icon: Shirt },
+      { id: 'slippers', label: 'Тапочки', icon: Footprints },
+      { id: 'valenki', label: 'Валенки', icon: Footprints },
     ],
   },
   {
@@ -268,6 +377,7 @@ export const CATEGORIES: Category[] = [
       { id: 'glue', label: 'Клей', icon: Pencil },
       { id: 'book', label: 'Книга', icon: Book },
     ],
+    isAdult: false,
   },
   {
     id: 'hygiene',

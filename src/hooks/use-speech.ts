@@ -20,7 +20,15 @@ export function useSpeech() {
     };
   }, []);
 
-  const speak = useCallback((text: string) => {
+  const speak = useCallback((text: string, audioUrl?: string) => {
+    if (audioUrl) {
+      const audio = new Audio(audioUrl);
+      audio.onplay = () => setIsSpeaking(true);
+      audio.onended = () => setIsSpeaking(false);
+      audio.play();
+      return;
+    }
+
     if (isSpeaking) {
       window.speechSynthesis.cancel();
     }
